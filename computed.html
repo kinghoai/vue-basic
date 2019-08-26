@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>number: {{ number }}</h2>
+        <h1>Dung methods</h1>
+        <h2>Number + A = {{ addA() }}</h2>
+        <h2>Number + B = {{ addB() }}</h2>
+        <h1>Dung Computed</h1>
+        <h2>Number + A = {{ computedA }}</h2>
+        <h2>Number + B = {{ computedB }}</h2>
+        <button v-on:click="a++"> A++ </button>
+        <button v-on:click="b++"> B++ </button>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            number: 10,
+            a: 0,
+            b: 0,
+        },
+        methods: {
+            //sử dụng method chi chạy addA sẽ load lại làm chạy luôn addB gây dư thừa và làm chậm quá trình xử lý
+            addA(){
+                console.log('addA');
+                return this.number + this.a;
+            },
+            addB(){
+                console.log('addB');
+                return this.number + this.b;
+            }
+        },
+        computed: {
+            //sử dụng computed lúc gọi ở view không cần (). Và hàm chỉ chạy lại khi các thành phần con của nó thay đổi
+            computedA(){
+                console.log('compoted addA');
+                return this.number + this.a;
+            },
+            computedB(){
+                console.log('compoted addB');
+                return this.number + this.b;
+            }
+        }
+    })
+</script>
+
+</html>
