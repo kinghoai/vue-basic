@@ -5,10 +5,10 @@ var app = new Vue({
         link: 'http://google.com',
     },
     methods: {
-        say: function(text){
+        say(text){
             return "hello " + text;
         },
-        getLink: function(){
+        getLink(){
             return this.link;
         }
     },  
